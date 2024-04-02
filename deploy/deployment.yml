@@ -1,1 +1,22 @@
 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dotnet-demoapp
+  labels:
+    app: dotnet-demoapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: dotnet-demoapp
+  template:
+    metadata:
+      labels:
+        app: dotnet-demoapp
+    spec:
+      containers:
+      - name: dotnet-demoapp
+        image: rahulpatil009/dotnet-demoapp:latest
+        ports:
+        - containerPort: 8080
